@@ -4,6 +4,9 @@
 	Date: Aug 5 2015
 '''
 
+from lxml import html
+import requests
+
 class AppCrawler:
 	def __init__(self, starting_url, depth):
 		self.starting_url = starting_url
@@ -11,9 +14,13 @@ class AppCrawler:
 		self.apps = []
 
 	def craw(self):
+		self.get_info_from_link(self.starting_url)
 		return
 
 	def get_info_from_link(self, link):
+		start_page = requests.get(link)
+
+		print(start_page.text)
 		return
 
 class App:
