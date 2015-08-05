@@ -32,5 +32,5 @@ crawler = AppCrawler('https://itunes.apple.com/us/app/angry-birds-2/id880047117?
 crawler.craw()
 
 for app in crawler.apps:
-	print app
+	print(app)
 
