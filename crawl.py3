@@ -31,6 +31,6 @@ class App:
 crawler = AppCrawler('https://itunes.apple.com/us/app/angry-birds-2/id880047117?mt=8',8)
 crawler.craw()
 
-for app in self.apps:
+for app in crawler.apps:
 	print app
 
