@@ -5,7 +5,7 @@ How to put hands to work!
 
 **1. Install Python**
 
-	Enter to (python.org) and install python lastest version
+	Enter to [](python.org) and install python lastest version
 
 **2. Install pip**
 
@@ -73,6 +73,13 @@ How to put hands to work!
 		return ("Name: " + self.name.encode('UTF-8') + 
         	"\r\nDeveloper: " + self.developer.encode('UTF-8') + 
         	"\r\nPrice: " + self.price.encode('UTF-8') + "\r\n")
+
+
+**More ways to crawl**
+
+- Beautiful Soup 
+- Scrappy
+
 
 
 	
