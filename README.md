@@ -5,7 +5,7 @@ How to put hands to work!
 
 **1. Install Python**
 
-	Enter to [](python.org) and install python lastest version
+	Enter to python.org and install python lastest version
 
 **2. Install pip**
 
