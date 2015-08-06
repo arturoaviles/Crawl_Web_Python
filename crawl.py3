@@ -6,16 +6,31 @@
 
 from lxml import html
 import requests
+import time
 
 class AppCrawler:
 	def __init__(self, starting_url, depth):
 		self.starting_url = starting_url
 		self.depth = depth
+		self.current_depth = 0 #How many levels of websites extra do you want to go
+		self.depth_links = [] #This is where all the links of all depths will be stored
 		self.apps = []
 
 	def craw(self):
-		self.get_info_from_link(self.starting_url)
-		return
+		app = self.get_info_from_link(self.starting_url)
+		self.apps.append(app)
+		self.depth_links.append(app.links)
+
+		while self.current_depth < self.depth:
+			current_links = []
+			for link in self.depth_links[self.current_depth]:
+				current_app = self.get_info_from_link(link)
+				current_links.extend(current_app.links)
+				self.apps.append(current_app)
+				time.sleep(5)
+			self.current_depth += 1
+			self.depth_links.append(current_links)
+
 
 	def get_info_from_link(self, link):
 		start_page = requests.get(link)
@@ -28,7 +43,7 @@ class AppCrawler:
 		
 		app = App(name, developer, price, links)
 		
-		self.apps.append(app)
+		return app
 		
 
 class App:
@@ -43,7 +58,7 @@ class App:
         	"\r\nDeveloper: " + self.developer + 
         	"\r\nPrice: " + self.price + "\r\n")
 
-crawler = AppCrawler('https://itunes.apple.com/us/app/angry-birds-2/id880047117?mt=8',8)
+crawler = AppCrawler('https://itunes.apple.com/us/app/angry-birds-2/id880047117?mt=8',1)
 crawler.craw()
 
 for app in crawler.apps:

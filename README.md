@@ -37,7 +37,7 @@ How to put hands to work!
 	>>>import requests
 	>>>quit()
 
-**7.Find a website you like**
+**7. Find a website you like**
 
 	Example: (https://itunes.apple.com/us/app/angry-birds-2/id880047117?mt=8)
 
