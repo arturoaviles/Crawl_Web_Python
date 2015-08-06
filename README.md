@@ -48,7 +48,7 @@ How to put hands to work!
 	2. Open Terminal
 	3. Navigate to the file folder
 	4. Write:
-		python3 file.py3 or python file.py *See Considerations
+			python3 file.py3 or python file.py *See Considerations
 	5. Hit Enter
 
 	If it did'nt deliver anything or deliver strange things you should edit the paths:
@@ -75,7 +75,7 @@ How to put hands to work!
         	"\r\nPrice: " + self.price.encode('UTF-8') + "\r\n")
 
 
-**More ways to crawl**
+**More ways to crawl:**
 
 - Beautiful Soup 
 - Scrappy
