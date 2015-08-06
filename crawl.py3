@@ -19,9 +19,17 @@ class AppCrawler:
 
 	def get_info_from_link(self, link):
 		start_page = requests.get(link)
+		tree = html.fromstring(start_page.text)
 
-		print(start_page.text)
-		return
+		name = tree.xpath('//h1[@itemprop="name"]/text()')[0] #This is where you reference to the specific html tag
+		developer = tree.xpath('//div[@class="left"]/h2/text()')[0]
+		price = tree.xpath('//div[@itemprop="price"]/text()')[0]
+		links = tree.xpath('//div[@class="extra-list more-by"]//*/a[@class="artwork-link"]/@href')
+		
+		app = App(name, developer, price, links)
+		
+		self.apps.append(app)
+		
 
 class App:
 	def __init__(self, name, developer, price, links):
@@ -31,9 +39,9 @@ class App:
 		self.links = links
 
 	def __str__(self):
-		return("Name: " + self.name.encode('UTF-8') +
-			"\r\nDeveloper: " + self.developer.encode('UTF-8') +
-			"\r\nPrice: " + self.price.encode('UTF-8') + "\r\n")
+		return ("Name: " + self.name + 
+        	"\r\nDeveloper: " + self.developer + 
+        	"\r\nPrice: " + self.price + "\r\n")
 
 crawler = AppCrawler('https://itunes.apple.com/us/app/angry-birds-2/id880047117?mt=8',8)
 crawler.craw()
